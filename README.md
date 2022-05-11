@@ -1,4 +1,21 @@
 # test_blacksmith
+A parking management system for B2B customers
+Specs: The system allows public users to know which spaces are available in a car park to save navigation time! On the company side, the system allows Vinci to have an overview of its car park (occupancy rate, time of use, etc.)
+
+
+We must therefore create the following RESTful API:
+
+- Login / Register a user (admin or public role)
+
+- Read - Update - Delete user information
+
+- Create a parking space (Space number / Floor / Availability / Occupancy time)
+
+- Assign / Unassign a parking space to a user
+
+- Search for a free space (by floor)
+
+- Search for a place by user (where did I park my car?)
 
 # Installation
 Here are the dependancies you need to install:

@@ -1,12 +1,21 @@
 //Importation de mongoose
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 //Importation du plugin
 const uniqueValidator = require('mongoose-unique-validator');
 
+//Definition roles
+const ROLE = {
+    ADMIN: 'admin',
+    PUBLIC: 'public'
+}
+
 //Création d'un schéma
-const userSchema = mongoose.Schema({
+const userSchema = new Schema({
+    username: { type: String, required: true },
     email: { type: String, required: true, unique: true },
+    role: { type: String, default: ROLE.ADMIN },
     password: { type: String, required: true }
 });
 

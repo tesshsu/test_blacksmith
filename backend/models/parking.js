@@ -1,8 +1,9 @@
 //Importation de mongoose
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 //Création d'un schéma de données
-const parkingSchema = mongoose.Schema({
+const parkingSchema = new Schema({
     userId: { type: String, required: true },
     name: { type: String, required: true },
     manufacturer: { type: String, required: true },
@@ -12,9 +13,7 @@ const parkingSchema = mongoose.Schema({
     spaceNumber: { type: Number, min: 1, max: 24, required: true },
     floor: { type: Number, min: 0, max: 5, required: true },
     availability: { type: Boolean, default: true },
-    occupancyTime: { type: Number, min: 1, max: 24, required: true },
-    createdAt: { type: Date, immutable: true, default: () => Date.now() },
-    updatedAt: { type: Date, immutable: true, default: () => Date.now() },
+    occupancyTime: { type: Number, min: 1, max: 24, required: true }
 });
 
 //Exportation du modele

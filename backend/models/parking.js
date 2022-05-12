@@ -6,10 +6,6 @@ const Schema = mongoose.Schema;
 const parkingSchema = new Schema({
     userId: { type: String, required: true },
     name: { type: String, required: true },
-    manufacturer: { type: String, required: true },
-    description: { type: String, required: true },
-    mainPepper: { type: String, required: true },
-    imageUrl: { type: String, required: true },
     spaceNumber: { type: Number, min: 1, max: 24, required: true },
     floor: { type: Number, min: 0, max: 5, required: true },
     availability: { type: Boolean, default: true },

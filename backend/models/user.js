@@ -22,6 +22,10 @@ const userSchema = new Schema({
         default: 'public',
         enum: ["public", "admin"]
     },
+    parking: [{ 
+        type: Schema.Types.ObjectId,
+        ref: "Parking"
+     }]
 });
 
 //Plugin appliqué au schéma pour empecher d'avoir plusieurs utilisateurs avec la meme adresse mail

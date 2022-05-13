@@ -10,34 +10,6 @@ import { AuthService } from './auth.service';
 export class ParkingsService {
 
   parkings$ = new Subject<Parking[]>();
-
-  tempParkings = [
-    {
-      _id: 'eizomfhazo',
-      note: 'p1',
-      floor: 1,
-      spaceNumber: 1,
-      occupancyTime: 24,
-      availability: true
-    },
-    {
-      _id: 'oimhoiohmhoih',
-      note: 'p2',
-      floor: 1,
-      spaceNumber: 2,
-      occupancyTime: 24,
-      availability: true
-    },
-    {
-      _id: 'oimjoijlhui',
-      note: 'p1',
-      floor: 1,
-      spaceNumber: 3,
-      occupancyTime: 24,
-      availability: true
-    }
-  ];
-
   constructor(private http: HttpClient,
               private auth: AuthService) {}
 

@@ -1,6 +1,7 @@
 
 //Importation du modele 
 const Parking = require('../models/parking');
+const User = require('../models/user');
 
 //Importation file system
 const fs = require('fs');
@@ -56,4 +57,20 @@ exports.getOneParking = (req, res, next) => {
   Parking.findOne({ _id: req.params.id })
     .then(parking => res.status(200).json(parking))
     .catch(error => res.status(404).json({ error }));
+};
+
+//Assigner une place de parking à un user
+exports.assginParkingtoUser = async (req, res, next) => {
+  let userId = req.body.userId
+  let parkingId = req.params.id
+
+  const parkingData = await Parking.create({
+    content: req.body.content,
+    assignUser: userId,
+  });
+
+  await Parking.updateOne({ _id: parkingId }, { $push: { parking: parkingData._id }})
+  .then(() => res.status(200).json({ message: `Assigner une place` }))
+  .catch((error) => res.status(400).json({ error }))
+
 };

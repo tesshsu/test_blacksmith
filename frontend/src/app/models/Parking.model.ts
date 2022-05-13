@@ -6,4 +6,5 @@ export class Parking {
   spaceNumber: number;
   occupancyTime: number;
   availability: boolean;
+  assignUser: string;
 }

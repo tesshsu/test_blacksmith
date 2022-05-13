@@ -16,6 +16,7 @@ router.put('/:id', auth, parkingCtrl.updateParking);
 router.delete('/:id', auth, parkingCtrl.deleteParking);
 router.get('/:id', auth, parkingCtrl.getOneParking); 
 router.get('/', auth, parkingCtrl.getAllParkings);
+router.post('/:id', auth, parkingCtrl.assginParkingtoUser);
 
 //Exportation du routeur
 module.exports = router;

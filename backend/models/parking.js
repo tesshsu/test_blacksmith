@@ -10,6 +10,10 @@ const parkingSchema = new Schema({
     spaceNumber: { type: Number, min: 1, max: 100, required: true, unique: true },
     occupancyTime: { type: Number, min: 1, max: 24, required: true },
     availability: { type: Boolean, default: true },
+    assignUser: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+     },
 });
 
 //Exportation du modele 

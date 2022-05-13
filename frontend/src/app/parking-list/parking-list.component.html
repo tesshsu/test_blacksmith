@@ -2,14 +2,15 @@
 <p class="list-title" *ngIf="!loading && parkings.length <= 0">
   Pas de parking affichage
 </p>
-<p class="list-title" *ngIf="!loading && parkings.length > 0">LES PARKINGS AVALIABLE</p>
+<p class="list-title" *ngIf="!loading && parkings.length > 0">LES PARKINGS</p>
 <div class="parking-list" *ngIf="!loading && parkings.length  > 0">
   <div class="parking-list-item" *ngFor="let parking of parkings" (click)="onClickParking(parking._id)">
-    <div class="parking-list-block" *ngIf="parking.availability == true">
+    <div class="parking-list-block">
       <p><strong>floor: </strong> <span>{{ parking.floor }}</span> /5</p>
       <p><strong>SpaceNumber: </strong> {{ parking.spaceNumber }}</p>
       <p><strong>OccupancyTime:</strong> {{ parking.occupancyTime }}h (total max 24h)</p>
-      <p><strong>Disponible:</strong> YES</p>
+      <p *ngIf="parking.availability == true"><strong>Disponible:</strong> YES</p>
+      <p *ngIf="parking.availability == false"><strong>Disponible:</strong> <span>NO</span></p>
       <dl *ngIf="parking.note != null"><strong>Note:</strong> {{ parking.note && parking.note | uppercase }}</dl>
     </div>
   </div>

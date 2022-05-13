@@ -57,7 +57,8 @@ export class ParkingFormComponent implements OnInit {
       floorValue: [{value: 1, disabled: true}],
       occupancyTime: [null, Validators.required],
       spaceNumber: [null, Validators.required],
-      availability: [true]
+      availability: [true],
+      assignUser: [null],
     });
     this.parkingForm.get('floor').valueChanges.subscribe(
       (value) => {
@@ -89,6 +90,7 @@ export class ParkingFormComponent implements OnInit {
     newParking.spaceNumber = this.parkingForm.get('spaceNumber')?.value;
     newParking.occupancyTime = this.parkingForm.get('occupancyTime')?.value;
     newParking.availability = this.parkingForm.get('availability')?.value;
+    newParking.assignUser = this.parkingForm.get('assignUser')?.value;
     newParking.userId = this.auth.getUserId();
 
     if (this.mode === 'new') {

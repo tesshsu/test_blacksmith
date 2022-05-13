@@ -17,7 +17,6 @@ export class ParkingFormComponent implements OnInit {
   loading: boolean;
   parking: Parking;
   errorMsg: string;
-  imagePreview: string;
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -54,11 +53,11 @@ export class ParkingFormComponent implements OnInit {
   initEmptyForm() {
     this.parkingForm = this.formBuilder.group({
       note: [null],
-      image: [null, Validators.required],
       floor: [1, Validators.required],
       floorValue: [{value: 1, disabled: true}],
-      occupancyTime: [1, Validators.required],
-      spaceNumber: [1, Validators.required],
+      occupancyTime: [null, Validators.required],
+      spaceNumber: [null, Validators.required],
+      availability: [true]
     });
     this.parkingForm.get('floor').valueChanges.subscribe(
       (value) => {
@@ -70,7 +69,6 @@ export class ParkingFormComponent implements OnInit {
   initModifyForm(parking: Parking) {
     this.parkingForm = this.formBuilder.group({
       note: [this.parking.note],
-      image: [this.parking.imageUrl, Validators.required],
       floor: [this.parking.floor, Validators.required],
       floorValue: [{value: this.parking.floor, disabled: true}],
       spaceNumber: [this.parking.spaceNumber, Validators.required],
@@ -81,19 +79,20 @@ export class ParkingFormComponent implements OnInit {
         this.parkingForm.get('floorValue').setValue(value);
       }
     );
-    this.imagePreview = this.parking.imageUrl;
   }
 
   onSubmit() {
-    this.loading = true;
+    //this.loading = true;
     const newParking = new Parking();
     newParking.note = this.parkingForm.get('note').value;
     newParking.floor = this.parkingForm.get('floor').value;
-    newParking.spaceNumber = this.parkingForm.get(' spaceNumber').value;
+    newParking.spaceNumber = this.parkingForm.get('spaceNumber').value;
     newParking.occupancyTime = this.parkingForm.get('occupancyTime').value;
+    newParking.availability = this.parkingForm.get('availability').value;
     newParking.userId = this.auth.getUserId();
+
     if (this.mode === 'new') {
-      this.parkings.createParking(newParking, this.parkingForm.get('image').value).then(
+      this.parkings.createParking(newParking).then(
         (response: { message: string }) => {
           console.log(response.message);
           this.loading = false;
@@ -107,7 +106,7 @@ export class ParkingFormComponent implements OnInit {
         }
       );
     } else if (this.mode === 'edit') {
-      this.parkings.modifyParking(this.parking._id, newParking, this.parkingForm.get('image').value).then(
+      this.parkings.modifyParking(this.parking._id, newParking).then(
         (response: { message: string }) => {
           console.log(response.message);
           this.loading = false;
@@ -121,16 +120,5 @@ export class ParkingFormComponent implements OnInit {
         }
       );
     }
-  }
-
-  onFileAdded(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.parkingForm.get('image').setValue(file);
-    this.parkingForm.updateValueAndValidity();
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imagePreview = reader.result as string;
-    };
-    reader.readAsDataURL(file);
   }
 }

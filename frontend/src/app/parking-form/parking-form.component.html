@@ -5,11 +5,6 @@
     <textarea class="form-control" id="note" rows="2" formControlName="note"></textarea>
   </div>
   <div class="form-group">
-    <input type="file" accept="image/*" #imageInput (change)="onFileAdded($event)">
-    <button mat-raised-button color="primary" (click)="imageInput.click()">ADD IMAGE/PDF FILE</button>
-    <img [src]="imagePreview" *ngIf="imagePreview" style="max-height: 100px;display:block;margin-top:10px">
-  </div>
-  <div class="form-group">
     <label for="floor">Floor *</label>
     <div class="floor-container">
       <input type="range" class="custom-range floor-range" min="1" max="5" id="floor" formControlName="floor">
@@ -18,15 +13,11 @@
   </div>
   <div class="form-group">
     <label for="spaceNumber">Space Number *</label>
-    <div class="spaceNumber-container">
-      <input type="number" class="form-control" formControlName="spaceNumber">
-    </div>
+    <input type="number" id="nspaceNumber" class="form-control" formControlName="spaceNumber">
   </div>
   <div class="form-group">
     <label for="occupancyTime">Occupancy Time *</label>
-    <div class="occupancyTime-container">
-      <input type="number" class="form-control" formControlName="occupancyTime">
-    </div>
+    <input type="number" id="occupancyTime" class="form-control" formControlName="occupancyTime">
   </div>
   <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="parkingForm.invalid">SUBMIT</button>
 </form>

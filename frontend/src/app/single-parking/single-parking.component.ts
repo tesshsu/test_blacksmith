@@ -14,9 +14,6 @@ export class SingleParkingComponent implements OnInit {
   loading: boolean;
   parking: Parking;
   userId: string;
-  likePending: boolean;
-  liked: boolean;
-  disliked: boolean;
   errorMessage: string;
 
   constructor(private parkings: ParkingsService,

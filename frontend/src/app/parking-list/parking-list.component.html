@@ -4,10 +4,10 @@
 </p>
 <p class="list-title" *ngIf="!loading && parkings.length > 0">LE PARKING</p>
 <div class="parking-list" *ngIf="!loading && parkings.length  > 0">
-  <div class="parking-list-item" *ngFor="let parking of parkings" (click)="onClickparking(parking._id)">
+  <div class="parking-list-item" *ngFor="let parking of parkings" (click)="onClickParking(parking._id)">
     <h4>{{ parking.note | uppercase }}</h4>
     <p>Floor: {{ parking.floor }}/5</p>
-    <p>Space Number: {{ parking.spaceNumber }} total:100</p>
-    <p>Occupancy Time: {{ parking.occupancyTime }} Max total allowed: 24</p>
+    <p>SpaceNumber: {{ parking.spaceNumber }}</p>
+    <p>OccupancyTime: {{ parking.occupancyTime }}/24 h</p>
   </div>
 </div>

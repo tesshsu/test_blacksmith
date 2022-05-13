@@ -10,12 +10,9 @@ const parkingCtrl = require('../controllers/parking');
 //Importation de l'authentification
 const auth = require('../middleware/auth');
 
-//Importation de multer
-const multer = require('../middleware/multer');
-
 //CRUD
-router.post('/', auth, multer, parkingCtrl.createParking); 
-router.put('/:id', auth, multer, parkingCtrl.modifyParking); 
+router.post('/', auth, parkingCtrl.createParking); 
+router.put('/:id', auth, parkingCtrl.updateParking); 
 router.delete('/:id', auth, parkingCtrl.deleteParking);
 router.get('/:id', auth, parkingCtrl.getOneParking); 
 router.get('/', auth, parkingCtrl.getAllParkings);

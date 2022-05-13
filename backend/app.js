@@ -42,9 +42,6 @@ app.use((req, res, next) => {
 //Middleware pour avoir accès au corps de la requete 
 app.use(express.json());
 
-//Configuration du middleware pour permettre l'accès aux images
-app.use('/images', express.static(path.join(__dirname, 'images')));
-
 //Enregistrement des routes
 app.use('/api/auth', userRoutes);
 app.use('/api/parkings', parkingRoutes);

@@ -68,10 +68,7 @@ export class ParkingsService {
 
   createParking(parking: Parking) {
     return new Promise((resolve, reject) => {
-      const formData = new FormData();
-      formData.append('parking', JSON.stringify(parking));
-
-      this.http.post('http://localhost:3000/api/parkings', formData).subscribe(
+      this.http.post('http://localhost:3000/api/parkings', parking).subscribe(
         (response: { message: string }) => {
           resolve(response);
         },

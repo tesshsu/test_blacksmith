@@ -1,15 +1,19 @@
 .parking-list {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
 .parking-list-item {
   text-align: center;
-  width: 220px;
-  img {
-    max-width: 200px;
-    max-height: 250px;
+  max-width: 220px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: solid 1px #0a7e48;
+  span{
+    color: rgb(12, 84, 133);
+    font-weight: 600;
   }
   h4 {
     margin: 0;
@@ -17,6 +21,12 @@
   }
   p {
     margin: 0;
+  }
+  dl{
+    margin: 0;
+    padding-top: 5px;
+    font-size: x-small;
+    color: rgb(12, 84, 133);
   }
   transition: all 0.1s ease-in-out;
   cursor: pointer;

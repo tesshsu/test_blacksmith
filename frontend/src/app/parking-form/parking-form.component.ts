@@ -84,11 +84,11 @@ export class ParkingFormComponent implements OnInit {
   onSubmit() {
     //this.loading = true;
     const newParking = new Parking();
-    newParking.note = this.parkingForm.get('note').value;
-    newParking.floor = this.parkingForm.get('floor').value;
-    newParking.spaceNumber = this.parkingForm.get('spaceNumber').value;
-    newParking.occupancyTime = this.parkingForm.get('occupancyTime').value;
-    newParking.availability = this.parkingForm.get('availability').value;
+    newParking.note = this.parkingForm.get('note')?.value;
+    newParking.floor = this.parkingForm.get('floor')?.value;
+    newParking.spaceNumber = this.parkingForm.get('spaceNumber')?.value;
+    newParking.occupancyTime = this.parkingForm.get('occupancyTime')?.value;
+    newParking.availability = this.parkingForm.get('availability')?.value;
     newParking.userId = this.auth.getUserId();
 
     if (this.mode === 'new') {

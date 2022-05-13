@@ -24,7 +24,7 @@ exports.createParking = (req, res, next) => {
 
 //Modification d'une Parking
 exports.updateParking = (req, res, next) => {
-  const parkingObject = JSON.parse(req.body.parking);
+  const parkingObject = req.body;
   Parking.updateOne(
     { _id : req.params.id}, 
     {...parkingObject, _id: req.params.id}

@@ -1,4 +1,6 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
+<h4 class="title-form" *ngIf="mode === 'edit'"> Modification du parking</h4>
+<h4 class="title-form" *ngIf="mode === 'new'"> Créer une parking</h4>
 <form [formGroup]="parkingForm" *ngIf="!loading">
   <div class="form-group">
     <label for="note">Note</label>

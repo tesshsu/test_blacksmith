@@ -1,10 +1,11 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div class="parking-container" *ngIf="!loading">
+  <h1 class="parking-title">Parking details</h1>
   <div class="parking-info">
-    <h1 class="parking-spaceNumber">{{ parking?.spaceNumber }}</h1>
-    <p class="occupancyTime">by {{ parking?.occupancyTime }}</p>
-    <h3>Note</h3>
-    <p>{{ parking.note }}</p>
+    <p><strong>floor: </strong> <span>{{ parking.floor }}</span> /5</p>
+      <p><strong>SpaceNumber: </strong> {{ parking.spaceNumber }}</p>
+      <p><strong>OccupancyTime:</strong> {{ parking.occupancyTime }}h (total max 24h)</p>
+      <p><strong>Disponible:</strong> YES</p>
     <div class="control-buttons">
       <button mat-raised-button (click)="onBack()">BACK</button>
       <button mat-raised-button color="primary" (click)="onModify()" *ngIf="userId === parking.userId">MODIFY</button>

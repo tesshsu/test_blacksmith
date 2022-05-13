@@ -81,27 +81,14 @@ export class ParkingsService {
 
   modifyParking(id: string, parking: Parking ) {
     return new Promise((resolve, reject) => {
-      if (typeof id === 'string') {
-        this.http.put('http://localhost:3000/api/parkings/' + id, parking).subscribe(
-          (response: { message: string }) => {
-            resolve(response);
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-      } else {
-        const formData = new FormData();
-        formData.append('parking', JSON.stringify(parking));
-        this.http.put('http://localhost:3000/api/parkings/' + id, formData).subscribe(
-          (response: { message: string }) => {
-            resolve(response);
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-      }
+      this.http.put('http://localhost:3000/api/parkings/' + id, parking).subscribe(
+        (response: { message: string }) => {
+          resolve(response);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
     });
   }
 

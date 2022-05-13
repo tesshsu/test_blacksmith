@@ -1,22 +1,58 @@
 {
-  "name": "parking-projet",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.html",
+  "name": "parkings-reviews",
+  "version": "0.0.0",
   "scripts": {
-    "start": "run-script-os",
-    "start:linux:darwin": "concurrently \"node ./node_modules/.bin/http-server -a localhost -p 8081\"  \"sleep 1 && open http://localhost:8081\"",
-    "start:win32": "node node_modules/live-server/live-server --port=8081"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
-  "author": "",
-  "license": "ISC",
+  "private": true,
   "dependencies": {
-    "concurrently": "^5.2.0",
-    "http-server": "^0.11.1",
-    "live-server": "^1.2.1",
-    "node-sass": "^7.0.1"
+    "@angular/animations": "~12.0.5",
+    "@angular/cdk": "^7.0.1",
+    "@angular/common": "~12.0.5",
+    "@angular/compiler": "~12.0.5",
+    "@angular/core": "~12.0.5",
+    "@angular/forms": "~12.0.5",
+    "@angular/http": "~7.0.0",
+    "@angular/material": "^7.0.1",
+    "@angular/platform-browser": "~12.0.5",
+    "@angular/platform-browser-dynamic": "~12.0.5",
+    "@angular/router": "~12.0.5",
+    "bootstrap": "^4.6.0",
+    "core-js": "^2.5.4",
+    "express": "^4.17.1",
+    "rxjs": "~6.6.7",
+    "sass": "^1.35.1",
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "run-script-os": "^1.1.1"
-  }
+    "@angular-devkit/build-angular": "^12.0.5",
+    "@angular/cli": "^12.0.5",
+    "@angular/compiler-cli": "^12.0.5",
+    "@angular/language-service": "~12.0.5",
+    "@types/jasmine": "~2.8.8",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "codelyzer": "~4.5.0",
+    "jasmine-core": "~2.99.1",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "^6.3.4",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~1.1.2",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "protractor": "^7.0.0",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.11.0",
+    "typescript": "~4.2.4"
+  },
+  "description": "Pour faire fonctionner le projet, vous devez installer :\r - [NodeJS](https://nodejs.org/en/download/) en version 12.14 ou 14.0 \r - [Angular CLI](https://github.com/angular/angular-cli) en version 7.0.2.\r - [node-sass](https://www.npmjs.com/package/node-sass) : attention à prendre la version correspondante à NodeJS. Pour Node 14.0 par exemple, installer node-sass en version 4.14+.",
+  "main": "server.js",
+  "author": "Yating Chatiron",
+  "license": "ISC"
 }
+  

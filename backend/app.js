@@ -12,7 +12,7 @@ dotenv.config();
 const path = require('path');
 
 //Importation des routes
-const ParkingRoutes = require('./routes/Parking');
+const parkingRoutes = require('./routes/parking');
 const userRoutes = require('./routes/user');
 
 //Création d'une application express
@@ -31,7 +31,7 @@ mongoose.connect(process.env.MONGO,
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 
-//Middleware pour résoudre les problemes de CORS
+//Middleware pour résoudre les problemes de CORS 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -39,7 +39,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//Middleware pour avoir accès au corps de la requete
+//Middleware pour avoir accès au corps de la requete 
 app.use(express.json());
 
 //Configuration du middleware pour permettre l'accès aux images
@@ -47,7 +47,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 //Enregistrement des routes
 app.use('/api/auth', userRoutes);
-app.use('/api/Parkings', ParkingRoutes);
+app.use('/api/parkings', parkingRoutes);
 
 //Exportation de cette application
 module.exports = app;

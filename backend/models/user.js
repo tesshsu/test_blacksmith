@@ -5,18 +5,22 @@ const Schema = mongoose.Schema;
 //Importation du plugin
 const uniqueValidator = require('mongoose-unique-validator');
 
-//Definition roles
-const ROLE = {
-    ADMIN: 'admin',
-    PUBLIC: 'public'
-}
-
 //Création d'un schéma
 const userSchema = new Schema({
-    username: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    role: { type: String, default: ROLE.ADMIN },
-    password: { type: String, required: true }
+    email: { 
+        type: String, 
+        required: true, 
+        unique: true 
+    },
+    password: { 
+        type: String, 
+        required: true 
+    },
+    role: {
+        type: String,
+        default: 'public',
+        enum: ["public", "admin"]
+    },
 });
 
 //Plugin appliqué au schéma pour empecher d'avoir plusieurs utilisateurs avec la meme adresse mail

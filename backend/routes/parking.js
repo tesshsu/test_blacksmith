@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 
 //Importation du controller
-const ParkingCtrl = require('../controllers/parking');
+const parkingCtrl = require('../controllers/parking');
 
 //Importation de l'authentification
 const auth = require('../middleware/auth');
@@ -14,11 +14,12 @@ const auth = require('../middleware/auth');
 const multer = require('../middleware/multer');
 
 //CRUD
-router.post('/', auth, multer, ParkingCtrl.createParking);
-router.put('/:id', auth, multer, ParkingCtrl.modifyParking);
-router.delete('/:id', auth, ParkingCtrl.deleteParking);
-router.get('/:id', auth, ParkingCtrl.getOneParking);
-router.get('/', auth, ParkingCtrl.getAllParkings);
+router.post('/', auth, multer, parkingCtrl.createParking); 
+router.put('/:id', auth, multer, parkingCtrl.modifyParking); 
+router.delete('/:id', auth, parkingCtrl.deleteParking);
+router.get('/:id', auth, parkingCtrl.getOneParking); 
+router.get('/', auth, parkingCtrl.getAllParkings);
+router.post('/:id/like', auth, parkingCtrl.likeDislikeParking);
 
 //Exportation du routeur
 module.exports = router;

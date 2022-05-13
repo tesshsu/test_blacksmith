@@ -1,0 +1,12 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
+<p class="list-title" *ngIf="!loading && parkings.length <= 0">
+  Pas de parking affichage
+</p>
+<p class="list-title" *ngIf="!loading && parkings.length > 0">LE PARKING</p>
+<div class="parking-list" *ngIf="!loading && parkings.length  > 0">
+  <div class="parking-list-item" *ngFor="let parking of parkings" (click)="onClickparking(parking._id)">
+    <img [src]="parking.imageUrl">
+    <h4>{{ parking.name | uppercase }}</h4>
+    <p>Heat: {{ parking.heat }}/10</p>
+  </div>
+</div>

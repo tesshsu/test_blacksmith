@@ -1,24 +1,10 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
 <div class="parking-container" *ngIf="!loading">
-  <img [src]="parking?.imageUrl" alt="">
   <div class="parking-info">
-    <h1 class="parking-name">{{ parking?.name }}</h1>
-    <p class="manufacturer">by {{ parking?.manufacturer }}</p>
-    <h3>Description</h3>
-    <p>{{ parking.description }}</p>
-    <div class="like-buttons" *ngIf="!likePending">
-      <div class="likes">
-        <i [ngClass]="{ 'fas liked': liked, 'far': !liked, 'disabled': disliked }" class="like fa-thumbs-up fa-lg" (click)="onLike()"></i>
-        <span>{{ parking.likes }}</span>
-      </div>
-      <div class="dislikes">
-        <i [ngClass]="{ 'fas disliked': disliked, 'far': !disliked, 'disabled': liked }" class="dislike fa-thumbs-down fa-lg" (click)="onDislike()"></i>
-        <span>{{ parking.dislikes }}</span>
-      </div>
-    </div>
-    <div class="like-pending" *ngIf="likePending">
-      <mat-spinner class="white-spinner"></mat-spinner>
-    </div>
+    <h1 class="parking-spaceNumber">{{ parking?.spaceNumber }}</h1>
+    <p class="occupancyTime">by {{ parking?.occupancyTime }}</p>
+    <h3>Note</h3>
+    <p>{{ parking.note }}</p>
     <div class="control-buttons">
       <button mat-raised-button (click)="onBack()">BACK</button>
       <button mat-raised-button color="primary" (click)="onModify()" *ngIf="userId === parking.userId">MODIFY</button>

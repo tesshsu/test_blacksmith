@@ -1,31 +1,31 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
 <form [formGroup]="parkingForm" *ngIf="!loading">
   <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" formControlName="name">
-  </div>
-  <div class="form-group">
-    <label for="manufacturer">Manufacturer</label>
-    <input type="text" class="form-control" id="manufacturer" formControlName="manufacturer">
-  </div>
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea class="form-control" id="description" rows="5" formControlName="description"></textarea>
+    <label for="note">Note</label>
+    <textarea class="form-control" id="note" rows="2" formControlName="note"></textarea>
   </div>
   <div class="form-group">
     <input type="file" accept="image/*" #imageInput (change)="onFileAdded($event)">
-    <button mat-raised-button color="primary" (click)="imageInput.click()">ADD IMAGE</button>
+    <button mat-raised-button color="primary" (click)="imageInput.click()">ADD IMAGE/PDF FILE</button>
     <img [src]="imagePreview" *ngIf="imagePreview" style="max-height: 100px;display:block;margin-top:10px">
   </div>
   <div class="form-group">
-    <label for="main-pepper">Main Pepper Ingredient</label>
-    <input type="text" class="form-control" id="main-pepper" formControlName="mainPepper">
+    <label for="floor">Floor *</label>
+    <div class="floor-container">
+      <input type="range" class="custom-range floor-range" min="1" max="5" id="floor" formControlName="floor">
+      <input type="number" class="form-control floor-reading" formControlName="floorValue">
+    </div>
   </div>
   <div class="form-group">
-    <label for="heat">Heat</label>
-    <div class="heat-container">
-      <input type="range" class="custom-range heat-range" min="1" max="10" id="heat" formControlName="heat">
-      <input type="number" class="form-control heat-reading" formControlName="heatValue">
+    <label for="spaceNumber">Space Number *</label>
+    <div class="spaceNumber-container">
+      <input type="number" class="form-control" formControlName="spaceNumber">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="occupancyTime">Occupancy Time *</label>
+    <div class="occupancyTime-container">
+      <input type="number" class="form-control" formControlName="occupancyTime">
     </div>
   </div>
   <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="parkingForm.invalid">SUBMIT</button>

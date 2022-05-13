@@ -53,34 +53,32 @@ export class ParkingFormComponent implements OnInit {
 
   initEmptyForm() {
     this.parkingForm = this.formBuilder.group({
-      name: [null, Validators.required],
-      manufacturer: [null, Validators.required],
-      description: [null, Validators.required],
+      note: [null],
       image: [null, Validators.required],
-      mainPepper: [null, Validators.required],
-      heat: [1, Validators.required],
-      heatValue: [{value: 1, disabled: true}]
+      floor: [1, Validators.required],
+      floorValue: [{value: 1, disabled: true}],
+      occupancyTime: [1, Validators.required],
+      spaceNumber: [1, Validators.required],
     });
-    this.parkingForm.get('heat').valueChanges.subscribe(
+    this.parkingForm.get('floor').valueChanges.subscribe(
       (value) => {
-        this.parkingForm.get('heatValue').setValue(value);
+        this.parkingForm.get('floorValue').setValue(value);
       }
     );
   }
 
   initModifyForm(parking: Parking) {
     this.parkingForm = this.formBuilder.group({
-      name: [this.parking.name, Validators.required],
-      manufacturer: [this.parking.manufacturer, Validators.required],
-      description: [this.parking.description, Validators.required],
+      note: [this.parking.note],
       image: [this.parking.imageUrl, Validators.required],
-      mainPepper: [this.parking.mainPepper, Validators.required],
-      heat: [this.parking.heat, Validators.required],
-      heatValue: [{value: this.parking.heat, disabled: true}]
+      floor: [this.parking.floor, Validators.required],
+      floorValue: [{value: this.parking.floor, disabled: true}],
+      spaceNumber: [this.parking.spaceNumber, Validators.required],
+      occupancyTime: [this.parking.occupancyTime, Validators.required]
     });
-    this.parkingForm.get('heat').valueChanges.subscribe(
+    this.parkingForm.get('floor').valueChanges.subscribe(
       (value) => {
-        this.parkingForm.get('heatValue').setValue(value);
+        this.parkingForm.get('floorValue').setValue(value);
       }
     );
     this.imagePreview = this.parking.imageUrl;
@@ -89,11 +87,10 @@ export class ParkingFormComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     const newParking = new Parking();
-    newParking.name = this.parkingForm.get('name').value;
-    newParking.manufacturer = this.parkingForm.get('manufacturer').value;
-    newParking.description = this.parkingForm.get('description').value;
-    newParking.mainPepper = this.parkingForm.get('mainPepper').value;
-    newParking.heat = this.parkingForm.get('heat').value;
+    newParking.note = this.parkingForm.get('note').value;
+    newParking.floor = this.parkingForm.get('floor').value;
+    newParking.spaceNumber = this.parkingForm.get(' spaceNumber').value;
+    newParking.occupancyTime = this.parkingForm.get('occupancyTime').value;
     newParking.userId = this.auth.getUserId();
     if (this.mode === 'new') {
       this.parkings.createParking(newParking, this.parkingForm.get('image').value).then(

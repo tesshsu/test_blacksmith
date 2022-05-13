@@ -1,14 +1,10 @@
 export class Parking {
   _id: string;
-  name: string;
-  manufacturer: string;
-  description: string;
-  heat: number;
-  likes: number;
-  dislikes: number;
+  note: string;
+  floor: number;
+  spaceNumber: number;
+  occupancyTime: number;
   imageUrl: string;
-  mainPepper: string;
-  usersLiked: string[];
-  usersDisliked: string[];
   userId: string;
+  availability: boolean;
 }

@@ -5,8 +5,10 @@
 <p class="list-title" *ngIf="!loading && parkings.length > 0">LE PARKING</p>
 <div class="parking-list" *ngIf="!loading && parkings.length  > 0">
   <div class="parking-list-item" *ngFor="let parking of parkings" (click)="onClickParking(parking._id)">
-    <img [src]="parking.imageUrl">
     <h4>{{ parking.name | uppercase }}</h4>
-    <p>Heat: {{ parking.heat }}/10</p>
+    <p>Floor: {{ parking.floor }}/5</p>
+    <p>SpaceNumber: {{ parking. spaceNumber }}</p>
+    <p>OccupancyTime: {{ parking.occupancyTime }}/24 h</p>
+    <p>Availability: {{ parking. availability }}</p>
   </div>
 </div>

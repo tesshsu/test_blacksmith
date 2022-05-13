@@ -19,7 +19,6 @@ router.put('/:id', auth, multer, parkingCtrl.modifyParking);
 router.delete('/:id', auth, parkingCtrl.deleteParking);
 router.get('/:id', auth, parkingCtrl.getOneParking); 
 router.get('/', auth, parkingCtrl.getAllParkings);
-router.post('/:id/like', auth, parkingCtrl.likeDislikeParking);
 
 //Exportation du routeur
 module.exports = router;

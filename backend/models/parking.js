@@ -6,11 +6,16 @@ const Schema = mongoose.Schema;
 const parkingSchema = new Schema({
     userId: { type: String, required: true },
     name: { type: String, required: true },
-    spaceNumber: { type: Number, min: 1, max: 24, required: true },
-    floor: { type: Number, min: 0, max: 5, required: true },
-    availability: { type: Boolean, default: true },
-    occupancyTime: { type: Number, min: 1, max: 24, required: true }
+    manufacturer: { type: String, required: true },
+    description: { type: String, required: true },
+    mainPepper: { type: String, required: true },
+    imageUrl: { type: String },
+    heat: { type: Number, required: true },
+    likes: { type: Number },
+    dislikes: { type: Number },
+    usersLiked: { type: [String] },
+    usersDisliked: { type: [String] }
 });
 
-//Exportation du modele
+//Exportation du modele 
 module.exports = mongoose.model('Parking', parkingSchema);

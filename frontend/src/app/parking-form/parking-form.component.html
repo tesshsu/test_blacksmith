@@ -22,8 +22,14 @@
     <input type="number" id="occupancyTime" class="form-control" formControlName="occupancyTime">
   </div>
   <div class="form-group" *ngIf="mode === 'edit'">
-    <label for="assignUser">Assigner une place de parking à un member</label>
-    <input type="number" id="assignUser" class="form-control" formControlName="assignUser">
+    <label for="assignUser">Assign Parking to a member</label>
+    <input type="text" id="assignUser" class="form-control" formControlName="assignUser">
+    <select class="browser-default custom-select">
+      <option selected>Open this select menu</option>
+      <option value="1">user id 1</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
   </div>
   <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="parkingForm.invalid">SUBMIT</button>
 </form>

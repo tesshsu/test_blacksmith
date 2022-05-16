@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ParkingsService } from '../services/parkings.service';
 import { Parking } from '../models/Parking.model';
 import { AuthService } from '../services/auth.service';
+import { User } from '../models/User.model';
 
 @Component({
   selector: 'app-parking-form',
@@ -17,6 +18,7 @@ export class ParkingFormComponent implements OnInit {
   loading: boolean;
   parking: Parking;
   errorMsg: string;
+  users: User[];
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -73,7 +75,8 @@ export class ParkingFormComponent implements OnInit {
       floor: [this.parking.floor, Validators.required],
       floorValue: [{value: this.parking.floor, disabled: true}],
       spaceNumber: [this.parking.spaceNumber, Validators.required],
-      occupancyTime: [this.parking.occupancyTime, Validators.required]
+      occupancyTime: [this.parking.occupancyTime, Validators.required],
+      assginUser: [this.parking.assignUser],
     });
     this.parkingForm.get('floor').valueChanges.subscribe(
       (value) => {

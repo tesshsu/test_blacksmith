@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { User } from '../models/User.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  users$ = new Subject<User[]>();
   isAuth$ = new BehaviorSubject<boolean>(false);
   private authToken: string;
   private userId: string;
@@ -30,6 +32,18 @@ export class AuthService {
 
   getToken() {
     return this.authToken;
+  }
+
+  getUsers() {
+    this.http.get('http://localhost:3000/api/users').subscribe(
+      (users: User[]) => {
+        this.users$.next(users);
+      },
+      (error) => {
+        this.users$.next([]);
+        console.error(error);
+      }
+    );
   }
 
   getUserId() {

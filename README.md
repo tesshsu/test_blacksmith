@@ -7,11 +7,13 @@ We must therefore create the following RESTful API:
 
 - Login / Register a user (admin or public role)
 
-- Read - Update - Delete user information
+- Read user information
 
-- Create a parking space (Space number / Floor / Availability / Occupancy time)
+- Create a parking space (Space number / Floor / Availability / Occupancy time) by admin
 
-- Assign / Unassign a parking space to a user
+- modify a parking space by who had created the parking place by admin
+
+- Assign / Unassign a parking space to a user by admin
 
 - Search for a free space (by floor)
 

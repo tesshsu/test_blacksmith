@@ -47,7 +47,12 @@ exports.deleteParking = (req, res, next) => {
 
 //Affichage des parkings
 exports.getAllParkings = (req, res, next) => {
-  Parking.find().sort({ field: 'asc', test: -1 })
+  let  filter = {} ;
+  if(req.query.floor ){
+    filter['floor'] = req.query.floor;
+  }
+
+  Parking.find(filter).sort({ field: 'asc', test: -1 })
     .then(parkings => res.status(200).json(parkings))
     .catch(error => res.status(400).json({ error }));
 };

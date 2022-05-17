@@ -3,6 +3,13 @@
   Pas de parking affichage
 </p>
 <p class="list-title" *ngIf="!loading && parkings.length > 0">LES PARKINGS</p>
+<form novalidate [formGroup]="parkingSearchForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="floor">Find a parking avaiable ? please type which floor ? *</label>
+    <input type="number" id="floor" class="form-control" formControlName="floor">
+  </div>
+  <button mat-raised-button color="primary" type="submit">Search</button>
+</form>
 <div class="parking-list" *ngIf="!loading && parkings.length  > 0">
   <div class="parking-list-item" *ngFor="let parking of parkings" (click)="onClickParking(parking._id)">
     <div class="parking-list-block">

@@ -38,6 +38,19 @@ export class ParkingsService {
     });
   }
 
+  getParkingByFloor(floor: number) {
+    return new Promise((resolve, reject) => {
+      this.http.get('http://localhost:3000/api/parkings/' + floor).subscribe(
+        (parking: Parking) => {
+          resolve(parking);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
+  }
+
   createParking(parking: Parking) {
     return new Promise((resolve, reject) => {
       this.http.post('http://localhost:3000/api/parkings', parking).subscribe(

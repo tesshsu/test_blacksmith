@@ -38,3 +38,6 @@ Navigate your browser to http://localhost:4200.
 The app should reload automatically when you make a change to a file.
 
 Use Ctrl+C in the terminal to stop the local server.
+
+# Reference Video
+https://youtu.be/R1Eeu3e08ZQ

@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   getUsers() {
-    this.http.get('http://localhost:3000/api/users').subscribe(
+    this.http.get('http://localhost:3000/api/auth/users').subscribe(
       (users: User[]) => {
         this.users$.next(users);
       },

@@ -45,11 +45,12 @@ exports.deleteParking = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
-//Affichage des parkings
+//Affichage des parkings et filter par floor
 exports.getAllParkings = (req, res, next) => {
-  let  filter = {} ;
-  if(req.query.floor ){
-    filter['floor'] = req.query.floor;
+
+  let filter = {};
+  if(req.query.floor){
+      filter['floor'] = req.query.floor;
   }
 
   Parking.find(filter).sort({ field: 'asc', test: -1 })

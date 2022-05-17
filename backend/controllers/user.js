@@ -57,7 +57,14 @@ exports.login = (req, res, next) => {
 
 //Affichage des users
 exports.getAllUsers = (req, res, next) => {
+  console.log('getAllUsers')
   User.find().sort({ field: 'asc', test: -1 })
-    .then(users => res.status(200).json(users))
-    .catch(error => res.status(400).json({ error }));
+    .then(users => {
+      console.log('users : ', users);
+      res.status(200).json(users)
+    })
+    .catch(error => {
+      console.log('error : ', error);
+      res.status(400).json({ error })
+    });
 };

@@ -11,6 +11,13 @@
   border-radius: 10px;
   margin-bottom: 20px;
   border: solid 1px #0a7e48;
+  .parking-list-occupy-block{
+      font-weight: 600;
+      background-color: aqua;
+  }
+  .parking-list-block{
+    background-color: white;
+}
   span{
     color: rgb(12, 84, 133);
     font-weight: 600;

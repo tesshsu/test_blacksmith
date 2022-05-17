@@ -8,6 +8,7 @@
       <dl *ngIf="parking.note != null"><strong>Note:</strong> {{ parking.note && parking.note | uppercase }}</dl>
       <p *ngIf="parking.availability == true"><strong>Disponible:</strong> YES</p>
       <p *ngIf="parking.availability == false"><strong>Disponible:</strong> <span>NO</span></p>
+      <dl class="parking-list-occupy-block" *ngIf="parking.assignUser != null"><strong>Assign Member:</strong> {{ parking.assignUser && parking.assignUser }}</dl>
     <div class="control-buttons">
       <button mat-raised-button (click)="onBack()">BACK</button>
       <button mat-raised-button color="primary" (click)="onModify()" *ngIf="userId === parking.userId">MODIFY</button>

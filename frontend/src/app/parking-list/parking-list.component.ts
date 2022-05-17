@@ -42,21 +42,14 @@ export class ParkingListComponent implements OnInit {
 
   initEmptyForm() {
     this.parkingSearchForm = this.formBuilder.group({
-      floor: [1, Validators.required],
-      floorValue: [{ value: 1, disabled: true }],
+      floor: [null],
     });
-   
-    this.parkingSearchForm.get('floor').valueChanges.subscribe(
-      (value) => {
-        this.parkingSearchForm.get('floorValue').setValue(value);
-      }
-    );
   }
 
   onSubmit() {
     if(this.parkingSearchForm.valid){
-      //this.parking.getParkingByFloor();
-      this.parkingSearchForm.reset();
+      console.log('this.parkingSearchForm : ', this.parkingSearchForm)
+      this.parking.getParkings({ floor: this.parkingSearchForm.get('floor')?.value});
     }
   }
 

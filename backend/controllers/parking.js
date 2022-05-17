@@ -51,6 +51,7 @@ exports.getAllParkings = (req, res, next) => {
   let filter = {};
   if(req.query.floor){
       filter['floor'] = req.query.floor;
+      filter['availability'] = true;
   }
 
   Parking.find(filter).sort({ field: 'asc', test: -1 })

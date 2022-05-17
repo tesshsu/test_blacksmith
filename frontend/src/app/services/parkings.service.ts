@@ -13,8 +13,13 @@ export class ParkingsService {
   constructor(private http: HttpClient,
               private auth: AuthService) {}
 
-  getParkings() {
-    this.http.get('http://localhost:3000/api/parkings').subscribe(
+  getParkings(bodyData: any = {}) {
+    let httpURL = 'http://localhost:3000/api/parkings';
+    if(bodyData && bodyData.floor){
+      httpURL += `?floor=${bodyData.floor}`;
+    }
+    console.log('httpURL : ', httpURL);
+    this.http.get(httpURL).subscribe(
       (parkings: Parking[]) => {
         this.parkings$.next(parkings);
       },
@@ -28,19 +33,6 @@ export class ParkingsService {
   getParkingById(id: string) {
     return new Promise((resolve, reject) => {
       this.http.get('http://localhost:3000/api/parkings/' + id).subscribe(
-        (parking: Parking) => {
-          resolve(parking);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
-    });
-  }
-
-  getParkingByFloor(floor: number) {
-    return new Promise((resolve, reject) => {
-      this.http.get('http://localhost:3000/api/parkings/' + floor).subscribe(
         (parking: Parking) => {
           resolve(parking);
         },

@@ -11,6 +11,7 @@ import { User } from '../models/User.model';
 export class AuthService {
   users$ = new Subject<User[]>();
   isAuth$ = new BehaviorSubject<boolean>(false);
+  userRole$ = new BehaviorSubject<string>('');
   private authToken: string;
   private userId: string;
 
@@ -53,9 +54,10 @@ export class AuthService {
   loginUser(email: string, password) {
     return new Promise<void>((resolve, reject) => {
       this.http.post('http://localhost:3000/api/auth/login', {email: email, password: password}).subscribe(
-        (response: {userId: string, token: string}) => {
+        (response: {userId: string, token: string, userRole: string}) => {
           this.userId = response.userId;
           this.authToken = response.token;
+          this.userRole$.next(response.userRole);
           this.isAuth$.next(true);
           resolve();
         },

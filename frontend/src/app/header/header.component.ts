@@ -10,7 +10,9 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   isAuth: boolean;
+  userRole: string;
   authSubscription: Subscription;
+  userRoleSubscription: Subscription;
 
   constructor(private auth: AuthService) { }
 
@@ -18,6 +20,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authSubscription = this.auth.isAuth$.subscribe(
       (auth) => {
         this.isAuth = auth;
+      }
+    );
+    this.userRoleSubscription = this.auth.userRole$.subscribe(
+      (userRole) => {
+        this.userRole = userRole;
       }
     );
   }
